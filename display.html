@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Player Data Display</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Player Data</h1>
+        <div id="imageContainer"></div>
+        <div id="playerName"></div>
+        <div id="playerCountry"></div>
+        <div id="playerRole"></div>
+        <div id="playerPrice"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            var playerData = JSON.parse(sessionStorage.getItem('playerData'));
+            console.log(playerData);
+            document.getElementById("playerName").innerText = "Name: " + playerData.name;
+            document.getElementById("playerCountry").innerText = "Country: " + playerData.country;
+            document.getElementById("playerRole").innerText = "Role: " + playerData.role;
+            document.getElementById("playerPrice").innerText = "Price: " + playerData.price;
+
+            var userInput = JSON.parse(sessionStorage.getItem('playerId'));
+            console.log(userInput);
+            var imageSource = "/images/"+ userInput + ".jpg"; 
+            imageContainer.innerHTML = "<img src='" + imageSource + "' alt='Image " + userInput + "'>";
+        };
+        
+            
+    </script>
+</body>
+</html>
